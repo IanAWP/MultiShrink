@@ -3,6 +3,7 @@ package io.github.ianawp.multishrink.compress.db;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.NotNull;
 
 /**
  * Created by IanAWP on 21/04/2017.
@@ -12,10 +13,11 @@ public class DBImage{
     @Id
     private Long id;
     private Long jobID;
+    @NotNull
     private String uri;
 
-    @Generated(hash = 415024020)
-    public DBImage(Long id, Long jobID, String uri) {
+    @Generated(hash = 316727799)
+    public DBImage(Long id, Long jobID, @NotNull String uri) {
         this.id = id;
         this.jobID = jobID;
         this.uri = uri;

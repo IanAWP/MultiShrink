@@ -9,7 +9,14 @@ import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
 
+import javax.inject.Inject;
+
+import io.github.ianawp.multishrink.di.AppModule;
+import io.github.ianawp.multishrink.di.DaggerApplicationComponent;
+
 public class PreferenceActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +28,7 @@ public class PreferenceActivity extends AppCompatActivity {
 
 
     public static class SettingsFragment extends PreferenceFragment {
-
+        @Inject SharedPreferences prefs;
 
         android.preference.Preference.OnPreferenceChangeListener preferenceChangeListener = new android.preference.Preference.OnPreferenceChangeListener() {
 
@@ -49,7 +56,7 @@ public class PreferenceActivity extends AppCompatActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
+            DaggerApplicationComponent.builder().appModule(new AppModule(getActivity().getApplication())).build().inject(this);
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.preferences);
             setUpPreferences();
@@ -66,7 +73,6 @@ public class PreferenceActivity extends AppCompatActivity {
             String sPref= getString(prefKey);
             android.preference.Preference pref = findPreference(sPref);
             pref.setOnPreferenceChangeListener(preferenceChangeListener);
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
             preferenceChangeListener.onPreferenceChange(pref,prefs.getString(sPref, "") );
 
 

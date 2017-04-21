@@ -3,6 +3,7 @@ package io.github.ianawp.multishrink.compress.db;
 import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.ToMany;
 import org.greenrobot.greendao.converter.PropertyConverter;
@@ -27,8 +28,12 @@ public class DBJob implements Job {
     @Id(autoincrement = true)
     @Property( nameInDb = "ID_JOB")
     private Long id;
+
+    @NotNull
     @Convert(converter = OutputFormatConverter.class, columnType = String.class)
     private  OutputFormat format;
+
+    @NotNull
     private  int resolution;
     @ToMany(referencedJoinProperty = "jobID")
     private List<DBImage> images;
@@ -39,8 +44,8 @@ public class DBJob implements Job {
     @Generated(hash = 724773420)
     private transient DBJobDao myDao;
 
-    @Generated(hash = 1954914855)
-    public DBJob(Long id, OutputFormat format, int resolution) {
+    @Generated(hash = 946533249)
+    public DBJob(Long id, @NotNull OutputFormat format, int resolution) {
         this.id = id;
         this.format = format;
         this.resolution = resolution;
