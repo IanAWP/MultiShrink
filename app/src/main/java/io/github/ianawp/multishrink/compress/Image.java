@@ -4,8 +4,6 @@
 // * Created by IanAWP on 21/04/2017.
 // */
 //
-//public interface JobSettings {
-//    OutputFormat getFormat();
-//
-//    int getResolution();
+//public interface Image {
+//    String getUri();
 //}

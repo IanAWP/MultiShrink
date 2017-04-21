@@ -1,23 +1,29 @@
 package io.github.ianawp.multishrink.compress;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by IanAWP on 21/04/2017.
  */
 
 public interface Job {
-    HashMap<String, String> getJobList();
+    List<String> getJobList();
 
-    void setJobList(HashMap<String, String> jobList);
+
 
     JobStatus getStatus();
 
     void setStatus(JobStatus status);
 
-    JobSettings getSettings();
+    String getKey();
 
-    void setSettings(JobSettings settings);
+    OutputFormat getFormat();
+    void setFormat(OutputFormat format);
 
-    String getId();
+    int getResolution();
+
+    void setResolution(int res);
+
+
 }
