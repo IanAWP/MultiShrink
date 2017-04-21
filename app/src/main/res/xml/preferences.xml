@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/pref_cat_images">
+        <ListPreference
+            android:defaultValue="5"
+            android:entries="@array/pref_image_size_names"
+            android:entryValues="@array/pref_image_size_values"
+            android:key="@string/key_images_output_size"
+            android:summary=""
+            android:title="Default image resolution"
+
+            />
+        <ListPreference
+            android:defaultValue="*"
+            android:entries="@array/pref_output_format_names"
+            android:entryValues="@array/pref_output_format_values"
+            android:key="@string/key_images_output_format"
+            android:title="Output image format" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_cat_storage"
+        app:title="Storage">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/key_storage_autodelete"
+            android:summary="Automatically delete images after they've been shared"
+            android:title="Delete images after sharing" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/key_storage_external"
+            android:title="Save to SD Card " />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_cat_gallery">
+
+        <ListPreference
+            android:defaultValue="DateD"
+            android:entries="@array/pref_gallery_groupby_names"
+            android:entryValues="@array/pref_gallery_groupby_values"
+            android:key="@string/key_gallery_groupby"
+            android:title="@string/pref_gallery_order" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/key_gallery_batch"
+            android:title="Group by batch"
+            />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

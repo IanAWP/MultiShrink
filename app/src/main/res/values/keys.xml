@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="key_storage_external">pref_storage_external<xliff:g id="preference_key" example="2">%d</xliff:g></string>
+    <string name="key_gallery_batch">pref_gallery_batch<xliff:g id="preference_key" example="2">%d</xliff:g></string>
+    <string name="key_gallery_groupby">pref_gallery_groupby<xliff:g id="preference_key" example="2">%d</xliff:g></string>
+    <string name="key_storage_autodelete">pref_storage_autodelete<xliff:g id="preference_key" example="2">%d</xliff:g></string>
+    <string name="key_images_output_format">images_output_format<xliff:g id="preference_key" example="2">%d</xliff:g></string>
+    <string name="key_images_output_size">images_output_size<xliff:g id="preference_key" example="2">%d</xliff:g></string>
+</resources>

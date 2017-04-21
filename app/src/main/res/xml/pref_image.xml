@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="5"
+        android:entries="@array/pref_image_size_names"
+        android:entryValues="@array/pref_image_size_values"
+        android:key="images_output_size"
+        android:title="Default Image Resolution" />
+    <ListPreference
+        android:defaultValue="*"
+        android:entries="@array/pref_output_format_names"
+        android:entryValues="@array/pref_output_format_values"
+        android:key="images_output_format"
+        android:title="Ouput image Format" />
+</PreferenceScreen>
