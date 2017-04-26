@@ -40,14 +40,14 @@
         <activity
             android:name=".testActivity"
             android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PreferenceActivity">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".PreferenceActivity">
+
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 

@@ -58,7 +58,7 @@ public class DBJob implements Job {
     @Override
     public List<String> getJobList() {
         ArrayList<String> imageSet = new ArrayList<String>();
-        for (DBImage im:images) {
+        for (DBImage im:getImages()) {
             imageSet.add(im.getUri());
         }
         return imageSet;

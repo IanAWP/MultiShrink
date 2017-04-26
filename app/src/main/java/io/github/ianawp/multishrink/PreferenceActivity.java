@@ -4,13 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
+import android.view.View;
+import android.widget.ExpandableListView;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.github.ianawp.multishrink.di.AppModule;
 import io.github.ianawp.multishrink.di.DaggerApplicationComponent;
 
@@ -21,11 +26,20 @@ public class PreferenceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new SettingsFragment())
                 .commit();
-    }
+        setupActionBar();
 
+    }
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
 
     public static class SettingsFragment extends PreferenceFragment {
         @Inject SharedPreferences prefs;
@@ -56,7 +70,7 @@ public class PreferenceActivity extends AppCompatActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            DaggerApplicationComponent.builder().appModule(new AppModule(getActivity().getApplication())).build().inject(this);
+            ((App)getActivity().getApplication()).getAppComponent().inject(this);
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.preferences);
             setUpPreferences();

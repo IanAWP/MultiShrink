@@ -10,6 +10,7 @@ import io.github.ianawp.multishrink.PreferenceActivity;
 import io.github.ianawp.multishrink.SelectorActivity;
 import io.github.ianawp.multishrink.compress.JobManager;
 import io.github.ianawp.multishrink.compress.db.DaoSession;
+import io.github.ianawp.multishrink.testActivity;
 
 
 /**
@@ -25,4 +26,5 @@ public interface ApplicationComponent {
 
     void inject(SelectorActivity activity);
     void inject(PreferenceActivity.SettingsFragment fragment);
+    void inject(testActivity activity);
 }

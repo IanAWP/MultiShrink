@@ -35,8 +35,8 @@ public class AppModule {
 
     @Singleton
     @Provides
-    JobManager getJobManager(){
-        return new DBJobManager();
+    JobManager getJobManager(DaoSession ds){
+        return new DBJobManager(ds);
     }
 
     @Singleton
