@@ -8,6 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:buttonStyle"></item>-->
     </style>
+    <style name="LargeText" parent="Base.TextAppearance.AppCompat.Large">
+        <item name="android:textColorPrimary">@color/jvText</item>
+    </style>
 
     <!--Selector Dialog-->
     <style name="AlertStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -24,5 +27,6 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>

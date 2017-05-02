@@ -82,6 +82,11 @@
     <string name="pref_cat_storage">Storage</string>
     <string name="pref_cat_gallery">Gallery</string>
     <string name="pref_gallery_order">Gallery Order</string>
+    <string name="share_button">share button</string>
+    <string name="redo_button">redo button</string>
+    <string name="more_button">more button</string>
+    <string name="placeholder_timestamp">31/11/2017 11:59 PM</string>
+    <string name="placeholder_image_count">4 Images</string>
     <string-array name="pref_image_size_values">
         <item>320x240</item>
         <item>640x480</item>
