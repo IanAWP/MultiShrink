@@ -2,10 +2,6 @@ package io.github.ianawp.multishrink;
 
 import android.app.Application;
 
-import org.greenrobot.greendao.database.Database;
-
-import io.github.ianawp.multishrink.compress.db.DaoMaster;
-import io.github.ianawp.multishrink.compress.db.DaoSession;
 import io.github.ianawp.multishrink.di.AppModule;
 import io.github.ianawp.multishrink.di.ApplicationComponent;
 import io.github.ianawp.multishrink.di.DaggerApplicationComponent;

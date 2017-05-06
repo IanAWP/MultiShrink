@@ -1,9 +1,7 @@
-package io.github.ianawp.multishrink.compress;
+package io.github.ianawp.multishrink.store;
 
 import android.net.Uri;
 
-import java.net.URI;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,7 +10,7 @@ import java.util.List;
 
 public interface JobManager {
     Job getJobByID(String ID);
-    //List<Job> getJobByStatus(JobStatus status);
     String createJob(List<Uri> uris, int vres, OutputFormat outputFormat);
-    List<Job> getAllJobs();
+    List<?extends Job> getJobs();
+    void RemoveJob(Job job);
 }

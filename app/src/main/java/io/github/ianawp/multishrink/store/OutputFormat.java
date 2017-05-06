@@ -1,4 +1,4 @@
-package io.github.ianawp.multishrink.compress;
+package io.github.ianawp.multishrink.store;
 
 /**
  * Created by IanAWP on 21/04/2017.

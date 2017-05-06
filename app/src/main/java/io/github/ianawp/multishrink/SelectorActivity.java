@@ -1,29 +1,27 @@
 package io.github.ianawp.multishrink;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.UriPermission;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContentResolverCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.ianawp.multishrink.compress.JobManager;
-import io.github.ianawp.multishrink.compress.OutputFormat;
-import io.github.ianawp.multishrink.di.AppModule;
-import io.github.ianawp.multishrink.di.DaggerApplicationComponent;
+import io.github.ianawp.multishrink.store.JobManager;
+import io.github.ianawp.multishrink.store.OutputFormat;
 
 public class SelectorActivity extends AppCompatActivity {
     String TAG="SELECTOR ACTIVITY";
@@ -36,7 +34,7 @@ public class SelectorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((App)getApplication()).getAppComponent().inject(this);
+        App.getAppComponent().inject(this);
         Log.i(TAG, jobManager.toString());
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -63,24 +61,29 @@ public class SelectorActivity extends AppCompatActivity {
     }
 
     void handleSendImage(Intent intent) {
-        Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imageUri != null) {
-            ArrayList<Uri> uris = new ArrayList<Uri>();
+            ArrayList<Uri> uris = new ArrayList<>();
+            uris.add(imageUri);
             SaveNewJob(uris);
         }
     }
 
     private void SaveNewJob(ArrayList<Uri> uris) {
        String jID = jobManager.createJob(uris, 1200, OutputFormat.SAME_AS_INPUT);
+        jobManager.getJobByID(jID).RunJob();
         Log.i(TAG, String.format("create new job [%s]" , jID));
     }
 
 
     void handleSendMultipleImages(Intent intent) {
+
         ArrayList<Uri> imageUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         if (imageUris != null) {
+
             SaveNewJob(imageUris);
         }
+
     }
 
     private void setUpSpinner() {
@@ -98,7 +101,7 @@ public class SelectorActivity extends AppCompatActivity {
         }
 
 // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<String> adapter =new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, res);
+        ArrayAdapter<String> adapter =new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, res);
 
 
         spnRes.setAdapter(adapter);
