@@ -89,15 +89,16 @@
     <string name="more_button">more button</string>
     <string name="placeholder_timestamp">31/11/2017 11:59 PM</string>
     <string name="placeholder_image_count">4 Images</string>
+    <string name="caption_quality">Quality</string>
     <string-array name="pref_image_size_values">
-        <item>320x240</item>
-        <item>640x480</item>
-        <item>800x600</item>
-        <item>1024x768</item>
-        <item>1280x960</item>
-        <item>1536x1180</item>
-        <item>1600x1200</item>
-        <item>2048x1536</item>
+        <item>320</item>
+        <item>640</item>
+        <item>800</item>
+        <item>1024</item>
+        <item>1280</item>
+        <item>1536</item>
+        <item>1600</item>
+        <item>2048</item>
     </string-array>
 
     <string-array name="pref_image_size_names">

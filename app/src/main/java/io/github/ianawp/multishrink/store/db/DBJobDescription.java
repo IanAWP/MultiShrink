@@ -39,18 +39,19 @@ public class DBJobDescription implements JobDescription {
     private  OutputFormat format;
 
     @NotNull
-    private  int resolution;
+    private  int maxDimension;
+
 
     @NotNull
     private Date timeStamp;
 
 
 
-    @Generated(hash = 1183432296)
-    public DBJobDescription(Long id, @NotNull OutputFormat format, int resolution, @NotNull Date timeStamp) {
+    @Generated(hash = 1118416099)
+    public DBJobDescription(Long id, @NotNull OutputFormat format, int maxDimension, @NotNull Date timeStamp) {
         this.id = id;
         this.format = format;
-        this.resolution = resolution;
+        this.maxDimension = maxDimension;
         this.timeStamp = timeStamp;
     }
 
@@ -68,15 +69,7 @@ public class DBJobDescription implements JobDescription {
         this.format=format;
     }
 
-    @Override
-    public int getResolution() {
-        return resolution;
-    }
 
-    @Override
-    public void setResolution(int res) {
-        resolution=res;
-    }
 
     public void setId(Long id) {
         this.id = id;
@@ -97,6 +90,16 @@ public class DBJobDescription implements JobDescription {
     public void setTimeStamp(Date timeStamp) {
         this.timeStamp = timeStamp;
     }
+
+    public int getMaxDimension() {
+        return this.maxDimension;
+    }
+
+    public void setMaxDimension(int maxDimension) {
+        this.maxDimension = maxDimension;
+    }
+
+
 
     static class OutputFormatConverter implements PropertyConverter<OutputFormat, String> {
         @Override

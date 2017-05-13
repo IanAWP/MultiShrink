@@ -24,7 +24,7 @@ public class DummyProcessor implements ImageProcessor {
     }
 
     @Override
-    public void processImage(Image image, OutputStream outputStream) {
+    public void processImage(Image image,JobDescription description, OutputStream outputStream) {
         InputStream inputStream;
         try {
              inputStream = app.getContentResolver().openInputStream(Uri.parse(image.getSourceUri()));

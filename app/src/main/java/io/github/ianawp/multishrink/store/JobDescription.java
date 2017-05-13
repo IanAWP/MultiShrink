@@ -12,9 +12,10 @@ public interface JobDescription {
     OutputFormat getFormat();
     void setFormat(OutputFormat format);
 
-    int getResolution();
+    int getMaxDimension();
 
-    void setResolution(int res);
+    void setMaxDimension(int res);
+
 
     Date    getTimeStamp();
 

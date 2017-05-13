@@ -10,6 +10,7 @@ import io.github.ianawp.multishrink.store.DummyProcessor;
 import io.github.ianawp.multishrink.store.ImageProcessor;
 import io.github.ianawp.multishrink.store.db.JobPersistenceManager;
 import io.github.ianawp.multishrink.store.fs.FSPersistenceManager;
+import io.github.ianawp.multishrink.store.magick.MagickProcessor;
 
 /**
  * Created by IanAWP on 5/05/2017.
@@ -23,7 +24,7 @@ public class DBJobModule {
     }
 
     @Singleton @Provides
-    static ImageProcessor provideImageProcessor(DummyProcessor dummyProcessor){
-        return dummyProcessor;
+    static ImageProcessor provideImageProcessor(MagickProcessor magickProcessor){
+        return magickProcessor;
     }
 }

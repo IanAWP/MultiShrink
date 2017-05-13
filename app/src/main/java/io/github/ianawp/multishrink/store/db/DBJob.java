@@ -23,6 +23,7 @@ import io.github.ianawp.multishrink.di.DaggerDBJobComponent;
 import io.github.ianawp.multishrink.store.Image;
 import io.github.ianawp.multishrink.store.ImageProcessor;
 import io.github.ianawp.multishrink.store.Job;
+import io.github.ianawp.multishrink.store.JobCallback;
 import io.github.ianawp.multishrink.store.JobDescription;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
@@ -87,25 +88,33 @@ public class DBJob implements Job {
     private transient Long jobDescription__resolvedKey;
 
     @Override
-    public void RunJob() {
-            new JobRunner().execute(this);
-    }
+    public void RunJob(JobCallback callback){
+        int i = 0;
 
-    public void ProcessImages() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         for ( DBImage im:getImages()){
+            i++;
             OutputStream stream = null;
             try {
                 stream = persistenceManager.getOutputStream(getId().toString(),im.getImageName());
             } catch (IOException e) {
                 Log.d(TAG, e.toString());
             }
-            imageProcessor.processImage(im, stream);
+            imageProcessor.processImage(im,getJobDescription(), stream);
 
             im.setTargetUri(persistenceManager.getUri(getId().toString(),im.getImageName()).toString());
             daoSession.getDBImageDao().update(im);
+            callback.OnUpdate(i, getImages().size());
         }
         this.setIsComplete(true);
     }
+
+
 
     @Override
     public List<? extends Image > getAllImages() {
@@ -248,11 +257,5 @@ public void __setDaoSession(DaoSession daoSession) {
     myDao = daoSession != null ? daoSession.getDBJobDao() : null;
 }
 
-private class JobRunner extends AsyncTask<DBJob, Integer, Boolean>{
-    @Override
-    protected Boolean doInBackground(DBJob... params) {
-       params[0].ProcessImages();
-        return true;
-    }
-}
+
 }

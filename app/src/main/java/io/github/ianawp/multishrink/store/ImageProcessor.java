@@ -10,5 +10,5 @@ import java.io.OutputStream;
  */
 
 public interface ImageProcessor {
-    void processImage(Image image, OutputStream stream);
+    void processImage(Image image, JobDescription description, OutputStream stream);
 }

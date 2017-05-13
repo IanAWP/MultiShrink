@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface JobManager {
     Job getJobByID(String ID);
-    String createJob(List<Uri> uris, int vres, OutputFormat outputFormat);
+    String createJob(List<Uri> uris,List<String> names,int maxDimension, OutputFormat outputFormat);
     List<?extends Job> getJobs();
     void RemoveJob(Job job);
 }

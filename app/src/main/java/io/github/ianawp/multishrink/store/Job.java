@@ -7,7 +7,7 @@ import java.util.List;
  */
 
 public interface Job {
-    void RunJob();
+    void RunJob(JobCallback progressCallback);
     List<? extends Image> getAllImages();
     boolean getIsComplete();
     JobDescription getJobDescription();

@@ -75,6 +75,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         final Job job = jobManager.getJobs().get(position);
         Date date = job.getJobDescription().getTimeStamp();
         SpannableString s = getColorText(date);
+
         vh.txtTimeStamp.setText(s);
 
         int size = job.getAllImages().size();
@@ -91,7 +92,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
                     .resize(dimension, dimension)
                     .centerCrop()
                     .into(vh.ivThumb);
-
+            vh.txtTimeStamp.setText(job.getAllImages().get(0).getImageName());
 
 
         }
